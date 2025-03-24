@@ -1,0 +1,14 @@
+@import "tailwindcss";
+
+@theme {
+  --font-LeagueSpartan: "League Spartan", "sans-serif";
+
+  --color-ScreenBackground: #fafafa;
+  --color-blackHover: #444444;
+}
+
+@layer components {
+  .navLinks {
+    @apply leading-[.94rem] font-semibold tracking-[-0.67px] text-black;
+  }
+}
