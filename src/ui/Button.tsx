@@ -8,7 +8,7 @@ type ButtonProps = {
 function Button({ menuIcon, ariaLabel, isNavigation, onClick }: ButtonProps) {
   return (
     <button
-      className={`${isNavigation && "hover:bg-blackHover cursor-pointer bg-black px-6 py-5 transition-colors duration-300 ease-in"}`}
+      className={`${isNavigation && "hover:bg-blackHover bg-black px-6 py-5"} cursor-pointer transition-all duration-300 ease-in`}
       onClick={onClick}
       aria-label={ariaLabel}
     >

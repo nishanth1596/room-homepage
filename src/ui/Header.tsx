@@ -1,48 +1,50 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Button from "./Button";
 import menuOpenIcon from "../assets/images/icon-hamburger.svg";
 import menuCloseIcon from "../assets/images/icon-close.svg";
 import Logo from "../assets/images/logo.svg";
 import moveRightIcon from "../assets/images/icon-angle-right.svg";
 import moveLeftIcon from "../assets/images/icon-angle-left.svg";
+import NavBar from "./NavBar";
 
-const images = [
-  {
-    mobile: "/mobile-image-hero-1.jpg",
-    desktop: "/desktop-image-hero-1.jpg",
-  },
-  {
-    mobile: "/mobile-image-hero-2.jpg",
-    desktop: "/desktop-image-hero-2.jpg",
-  },
-  {
-    mobile: "/mobile-image-hero-3.jpg",
-    desktop: "/desktop-image-hero-3.jpg",
-  },
-];
+type ImagesProp = {
+  mobile: string;
+  desktop: string;
+}[];
 
 type HeaderProps = {
   index: number;
   handlePrev: () => void;
   handleNext: () => void;
+  images: ImagesProp;
 };
 
-function Header({ index, handlePrev, handleNext }: HeaderProps) {
+function Header({ index, images, handlePrev, handleNext }: HeaderProps) {
   const [isbtnVisible, setIsBtnVisible] = useState<boolean>(false);
+  const [isDesktop, setIsDesktop] = useState(window.innerWidth >= 768);
 
   function handleVisible() {
     setIsBtnVisible((show) => !show);
   }
 
+  useEffect(() => {
+    function handleResize() {
+      setIsDesktop(window.innerWidth >= 768);
+    }
+    window.addEventListener("resize", handleResize);
+  }, []);
+
   return (
     <header
-      className="relative bg-cover bg-no-repeat px-6 pt-12 pb-[18rem] transition-all duration-500"
+      className="relative bg-cover bg-no-repeat px-6 pt-12 pb-[18rem] transition-all duration-500 xl:bg-contain"
       style={{
-        backgroundImage: `url(${window.innerWidth >= 768 ? images[index].desktop : images[index].mobile})`,
+        backgroundImage: `url(${isDesktop ? images[index].desktop : images[index].mobile})`,
       }}
     >
-      {!isbtnVisible && (
-        <div className="flex items-center gap-28">
+      <div></div>
+
+      {!isbtnVisible && !isDesktop && (
+        <div className="flex items-center gap-28 md:hidden">
           <Button
             onClick={handleVisible}
             ariaLabel="Click to open menu"
@@ -77,22 +79,7 @@ function Header({ index, handlePrev, handleNext }: HeaderProps) {
               menuIcon={menuCloseIcon}
               isNavigation={false}
             />
-            <nav>
-              <ul className="flex gap-8">
-                <li className="navLinks">
-                  <a href="#">Home</a>
-                </li>
-                <li className="navLinks">
-                  <a href="#">Shop</a>
-                </li>
-                <li className="navLinks">
-                  <a href="#">About</a>
-                </li>
-                <li className="navLinks">
-                  <a href="#">Contact</a>
-                </li>
-              </ul>
-            </nav>
+            <NavBar />
           </div>
         </div>
       )}
