@@ -15,6 +15,7 @@ function Hero() {
   }
   return (
     <section className="relative lg:grid lg:grid-cols-[840fr_600fr]">
+      <h2 className="sr-only">Hero Section</h2>
       <Header
         images={images}
         handleNext={handleNext}

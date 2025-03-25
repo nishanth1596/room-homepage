@@ -64,21 +64,6 @@ function Header({ index, images, handlePrev, handleNext }: HeaderProps) {
         isHero={false}
       />
 
-      {/* <div className="absolute right-0 bottom-0 md:hidden">
-        <Button
-          onClick={handlePrev}
-          isNavigation={true}
-          ariaLabel="Slide to previous"
-          menuIcon={moveLeftIcon}
-        />
-        <Button
-          onClick={handleNext}
-          isNavigation={true}
-          ariaLabel="Slide to next"
-          menuIcon={moveRightIcon}
-        />
-      </div> */}
-
       {isbtnVisible && (
         <div className="fixed inset-0 bg-black/50">
           <div className="fixed top-0 right-0 left-0 flex items-center justify-between bg-white px-6 py-12">
