@@ -16,10 +16,10 @@ function HeroInfo({
 }: HeroInfoProps) {
   return (
     <article className="px-8 pt-[3.75rem] pb-[4.5rem] lg:px-20 lg:pb-0 xl:px-[6.25rem] xl:pt-[7.5rem]">
-      <h2 className="text-[2.5rem] leading-8 font-semibold tracking-[-1.67px]">
+      <h2 className="text-[2.5rem] leading-8 font-semibold tracking-[-1.67px] xl:text-5xl xl:leading-11 xl:tracking-[-2px]">
         {title}
       </h2>
-      <p className="text-LightGray mt-4 leading-[1.375rem] font-medium tracking-[-0.33px]">
+      <p className="text-LightGray mt-4 leading-[1.375rem] font-medium tracking-[-0.33px] xl:mt-[18px]">
         {description}
       </p>
 
