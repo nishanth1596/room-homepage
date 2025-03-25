@@ -1,13 +1,21 @@
 import IconArrow from "../assets/images/icon-arrow.svg";
+import BlackNavigationButton from "./BlackNavigationButton";
 
 type HeroInfoProps = {
   title: string;
   description: string;
+  handlePrev: () => void;
+  handleNext: () => void;
 };
 
-function HeroInfo({ title, description }: HeroInfoProps) {
+function HeroInfo({
+  title,
+  description,
+  handleNext,
+  handlePrev,
+}: HeroInfoProps) {
   return (
-    <article className="mx-8 mt-[3.75rem] mb-[4.5rem]">
+    <article className="px-8 pt-[3.75rem] pb-[4.5rem] lg:px-20 lg:pb-0 xl:px-[6.25rem] xl:pt-[7.5rem]">
       <h2 className="text-[2.5rem] leading-8 font-semibold tracking-[-1.67px]">
         {title}
       </h2>
@@ -25,6 +33,12 @@ function HeroInfo({ title, description }: HeroInfoProps) {
           <img src={IconArrow} alt="" />
         </span>
       </a>
+
+      <BlackNavigationButton
+        onHandleNextImage={handleNext}
+        onHandlePrevImage={handlePrev}
+        isHero
+      />
     </article>
   );
 }

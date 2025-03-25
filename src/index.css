@@ -10,6 +10,6 @@
 
 @layer components {
   .navLinks {
-    @apply leading-[.94rem] font-semibold tracking-[-0.67px] text-black hover:underline hover:underline-offset-8 lg:hover:decoration-white;
+    @apply leading-[.94rem] font-semibold tracking-[-0.67px] text-black hover:underline hover:underline-offset-8 lg:text-white lg:hover:decoration-white;
   }
 }

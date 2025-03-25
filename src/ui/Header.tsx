@@ -2,10 +2,10 @@ import { useEffect, useState } from "react";
 import Button from "./Button";
 import menuOpenIcon from "../assets/images/icon-hamburger.svg";
 import menuCloseIcon from "../assets/images/icon-close.svg";
-import Logo from "../assets/images/logo.svg";
-import moveRightIcon from "../assets/images/icon-angle-right.svg";
-import moveLeftIcon from "../assets/images/icon-angle-left.svg";
+
 import NavBar from "./NavBar";
+import Logo from "./Logo";
+import BlackNavigationButton from "./BlackNavigationButton";
 
 type ImagesProp = {
   mobile: string;
@@ -36,12 +36,15 @@ function Header({ index, images, handlePrev, handleNext }: HeaderProps) {
 
   return (
     <header
-      className="relative bg-cover bg-no-repeat px-6 pt-12 pb-[18rem] transition-all duration-500 xl:bg-contain"
+      className="relative bg-cover bg-no-repeat px-6 pt-12 pb-[18rem] transition-all duration-500 lg:bg-cover lg:px-16 lg:pt-16 lg:pb-0"
       style={{
         backgroundImage: `url(${isDesktop ? images[index].desktop : images[index].mobile})`,
       }}
     >
-      <div></div>
+      <div className="hidden items-start gap-14 lg:flex">
+        <Logo />
+        <NavBar />
+      </div>
 
       {!isbtnVisible && !isDesktop && (
         <div className="flex items-center gap-28 md:hidden">
@@ -51,11 +54,17 @@ function Header({ index, images, handlePrev, handleNext }: HeaderProps) {
             menuIcon={menuOpenIcon}
             isNavigation={false}
           />
-          <img src={Logo} alt="Room Logo" />
+          <Logo />
         </div>
       )}
 
-      <div className="absolute right-0 bottom-0">
+      <BlackNavigationButton
+        onHandleNextImage={handleNext}
+        onHandlePrevImage={handlePrev}
+        isHero={false}
+      />
+
+      {/* <div className="absolute right-0 bottom-0 md:hidden">
         <Button
           onClick={handlePrev}
           isNavigation={true}
@@ -68,7 +77,7 @@ function Header({ index, images, handlePrev, handleNext }: HeaderProps) {
           ariaLabel="Slide to next"
           menuIcon={moveRightIcon}
         />
-      </div>
+      </div> */}
 
       {isbtnVisible && (
         <div className="fixed inset-0 bg-black/50">

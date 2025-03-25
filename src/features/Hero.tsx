@@ -14,7 +14,7 @@ function Hero() {
     setIndex((prev) => (prev === 0 ? images.length - 1 : prev - 1));
   }
   return (
-    <section className="xl:grid xl:grid-cols-[840fr_600fr]">
+    <section className="relative lg:grid lg:grid-cols-[840fr_600fr]">
       <Header
         images={images}
         handleNext={handleNext}
@@ -26,6 +26,8 @@ function Hero() {
         key={productInfo[index].id}
         title={productInfo[index].title}
         description={productInfo[index].description}
+        handleNext={handleNext}
+        handlePrev={handlePrev}
       />
     </section>
   );
